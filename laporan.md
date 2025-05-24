@@ -12,45 +12,52 @@ Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek
 
 ## Business Understanding
 
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
-
 ### Problem Statements
-
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- Bagaimana cara memprediksi apakah seorang pasien berpotensi mengalami penyakit jantung berdasarkan data klinis?
+- Algoritma machine learning mana yang paling optimal untuk kasus prediksi penyakit jantung?
 
 ### Goals
+- Menghasilkan model machine learning yang dapat memprediksi risiko penyakit jantung secara akurat.
+- Mengidentifikasi model terbaik dari beberapa algoritma melalui evaluasi metrik performa.
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
-
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+### Solution statements
+- Menerapkan beberapa algoritma klasifikasi seperti Logistic Regression, Random Forest, dan Support Vector Machine.
+- Melakukan hyperparameter tuning untuk meningkatkan performa model.
+- Menggunakan metrik evaluasi seperti F1-score, precision, recall, dan akurasi untuk memilih model terbaik.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+**Sumber Dataset**: [Heart Failure Prediction Dataset - fedesoriano]([https://finance.yahoo.com/quote/TLKM.JK](https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction))  
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+Jumlah Data: 918 observasi
+Jumlah 
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+### Variabel-variabel pada Heart Failure Prediction Dataset adalah sebagai berikut:
+- Age: Usia pasien
+- Sex: Jenis kelamin (0 = Perempuan, 1 = Laki-laki)
+- ChestPainType: Jenis nyeri dada
+- RestingBP: Tekanan darah saat istirahat
+- Cholesterol: Tingkat kolesterol
+- FastingBS: Gula darah puasa (1 jika > 120 mg/dl, 0 jika tidak)
+- RestingECG: Hasil EKG saat istirahat
+- MaxHR: Detak jantung maksimum selama tes
+- ExerciseAngina: Angina akibat latihan
+- Oldpeak: Depresi ST
+- ST_Slope: Kemiringan segmen ST
+- HeartDisease: Target variabel (1 = mengidap penyakit jantung, 0 = tidak)
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
+### Menangani outliers
+```
+for column in num_cols:
+    q1 = df[column].quantile(0.25)
+    q3 = df[column].quantile(0.75)
+    iqr = q3 - q1
+    lb = q1 - 1.5 * iqr
+    ub = q3 + 1.5 * iqr
+    df[column] = df[column].clip(lb, ub)
+```
+
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
@@ -61,6 +68,12 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
 
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Algoritma yang digunakan:
+- Logistic Regression
+- Random Forest
+- Support Vector Machine (SVM)
+- K-Nearest Neighbors (KNN)
+- XGBoost
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
