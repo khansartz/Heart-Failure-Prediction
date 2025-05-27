@@ -121,12 +121,14 @@ Model dan Parameter
 Berikut algoritma yang digunakan beserta parameter yang dituning:
 
 **1.	Logistic Regression**
+- Cara Kerja: Logistic Regression menggunakan fungsi sigmoid untuk mengubah output linear menjadi probabilitas antara 0 dan 1. Model ini memperkirakan kemungkinan suatu data masuk ke kelas tertentu berdasarkan bobot dari masing-masing fitur. Prediksi dilakukan dengan menetapkan threshold
 - Model: LogisticRegression(max_iter=10000, random_state=42)
 - Parameter:
     - C: tingkat regularisasi, dicari dari distribusi uniform (0.01 hingga 10)
     - solver: metode optimisasi ('lbfgs' dan 'saga')
 
 **2.	Random Forest**
+- Cara Kerja: Random Forest merupakan algoritma ensemble yang membangun banyak decision trees secara acak, lalu menggabungkan prediksinya menggunakan mayoritas. Setiap pohon dilatih dengan subset data dan subset fitur yang berbeda, sehingga meningkatkan keanekaragaman dan akurasi model.
 - Model: RandomForestClassifier(random_state=42)
 - Parameter:
     - n_estimators: jumlah pohon, antara 50 hingga 300
@@ -136,6 +138,7 @@ Berikut algoritma yang digunakan beserta parameter yang dituning:
     - max_features: metode pemilihan fitur ('sqrt', 'log2', None)
       
 **3.	Gradient Boosting**
+- Cara Kerja: Gradient Boosting membangun model secara bertahap, di mana setiap pohon baru dilatih untuk memperbaiki kesalahan dari pohon sebelumnya. Model menghitung gradient loss function dan menggunakannya untuk memperbaiki prediksi. Proses ini dilakukan secara berulang untuk meningkatkan performa.
 - Model: GradientBoostingClassifier(random_state=42)
 - Parameter:
     - n_estimators: jumlah estimator (50-300)
@@ -143,12 +146,14 @@ Berikut algoritma yang digunakan beserta parameter yang dituning:
     - max_depth: kedalaman pohon (3-10)
       
 **4.	AdaBoost**
+- Cara Kerja: AdaBoost (Adaptive Boosting) bekerja dengan membangun serangkaian decision stumps, di mana setiap model selanjutnya fokus pada kesalahan dari model sebelumnya. Model akhir menggabungkan semua decision stumps tersebut dengan bobot tertentu agar hasil prediksinya lebih akurat.
 - Model: AdaBoostClassifier(random_state=42)
 - Parameter:
     - n_estimators: jumlah estimator (50-300)
     - learning_rate: tingkat pembelajaran (0.01-1.0)
       
 **5.	Support Vector Machine (SVM)**
+- Cara Kerja: SVM berusaha mencari hyperplane (garis batas) terbaik yang memisahkan kelas dalam ruang fitur. Model ini bekerja optimal ketika data terpisah secara jelas. Kernel trick seperti Radial Basis Function (RBF) digunakan untuk menangani data yang tidak bisa dipisahkan secara linear dengan memetakan data ke dimensi yang lebih tinggi.
 - Model: SVC(probability=True, random_state=42)
 - Parameter:
     - C: parameter regularisasi dari distribusi uniform (0.1-10)
